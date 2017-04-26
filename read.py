@@ -21,11 +21,14 @@ def time_func(func):
 def col_count(data):    #better
     for k in data:
         print "the count {} in data is:{}".format(k,data[k])
-# @time_func
-# def set_count(table_list):
-#     for item in set(table_list):
-#         # print set(table_list)
-#         print "the count {} in data is:{}".format(item,table_list.count(item))
+'''
+# https://www.zhihu.com/question/27800240
+@time_func
+def set_count(table_list):
+    for item in set(table_list):
+        print "the count {} in data is:{}".format(item,table_list.count(item))
+'''
+
 if __name__ == '__main__':
     fname = "cw.xlsx"
     fname1 = "china.xls"
@@ -34,7 +37,8 @@ if __name__ == '__main__':
     # print sheet_name
     table = workfile.sheet_by_index(0)
     table_list = table.col_values(1)
-    data = collections.Counter(table_list)
+    useful_data_list = table_list[5:-1][-1]
+    data = collections.Counter(useful_data_list)
     print "*"*20
     col_count(data)
     # print "*"*20

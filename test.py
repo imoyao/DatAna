@@ -22,8 +22,8 @@ sheet_name = work_book.sheet_names()[0].encode("utf-8") #sheet name
 table = work_book.sheet_by_index(0)  #读取第一个sheet   
 table_list = table.col_values(1)    #读取第二列（index=1）
 
-useful_data_list = table_list[5:-1][-1]
-print useful_data_list
+useful_data_list = table_list[5:-1]
+# print useful_data_list
 
 # countyname = table.cell_value(5,1).encode('utf-8')
 # county = table.cell(3,1).value.encode('utf-8')
@@ -32,6 +32,12 @@ print useful_data_list
 # print countyname
 # print county
 # print countype
-# data = collections.Counter(table_list)
-# for k in data:
-#     print "the count {} in data is:{}".format(k,data[k])
+data = collections.Counter(useful_data_list)
+count_list = []
+for k in data:
+    print "the count {} in data is:{}".format(k,data[k])
+    count_list.append(data[k])
+    print sum(count_list)
+
+
+
