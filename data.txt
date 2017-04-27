@@ -1,0 +1,24 @@
+=COUNTIF(B6:B9520,"枣园镇")
+
+总户数：35589
+昭仁街道办事处：5035
+巨家：4017户
+相公：3435户
+丁家：2609户
+洪家：3481户
+亭口：4965户
+彭公：4397户
+枣园：2162户
+
+
+funcall_cost = 0
+def deco(func):
+	def wrapfunc(*args, **kwrags):
+		global funcall_cost
+		now = time()
+		result = func(*args, **kwargs)
+		funcall_cost = time() - now
+		return result
+	return wrapfunc
+
+
