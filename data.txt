@@ -1,0 +1,62 @@
+'''
+http://old.sebug.net/paper/books/scipydoc/index.html
+http://blog.csdn.net/jenyzhang/article/details/52047557
+http://matplotlib.org/index.html
+不显示图片，以便进行批处理：
+
+import matplotlib
+matplotlib.use('Agg')
+需加在 import matplotlib.pyplot as plt 之前，同时删掉plt.show()
+'''
+
+"""
+Simple demo of a horizontal bar chart.
+
+atplotlib.pyplot.bar(left, height, width=0.8, bottom=None, hold=None, data=None, **kwargs)
+参数说明：
+
+left: 每一个柱形左侧的X坐标
+
+height:每一个柱形的高度
+
+width: 柱形之间的宽度
+
+bottom: 柱形的Y坐标
+
+color: 柱形的颜色
+
+the count 彭公镇 in data is:1723
+the count 亭口镇 in data is:1324
+the count 相公镇 in data is:1309
+the count 巨家镇 in data is:835
+the count 昭仁街道办 in data is:1543
+the count 枣园镇 in data is:778
+the count 丁家镇 in data is:584
+the count 洪家镇 in data is:1419
+"""
+
+
+=COUNTIF(B6:B9520,"枣园镇")
+
+总户数：35589
+昭仁街道办事处：5035
+巨家：4017户
+相公：3435户
+丁家：2609户
+洪家：3481户
+亭口：4965户
+彭公：4397户
+枣园：2162户
+
+
+funcall_cost = 0
+def deco(func):
+	def wrapfunc(*args, **kwrags):
+		global funcall_cost
+		now = time()
+		result = func(*args, **kwargs)
+		funcall_cost = time() - now
+		return result
+	return wrapfunc
+
+

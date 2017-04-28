@@ -4,6 +4,7 @@ import time
 import xlrd
 import collections
 import sys
+import settings
 '''
 不显示图片，以便进行批处理或调试：
 
@@ -51,14 +52,16 @@ def col_count(data):    #better
 
 # @time_it
 def read_excel():
-    fname = "cw.xlsx"
+    fname = settings.EXCEL_PATH
     workfile = xlrd.open_workbook(fname)    #type=list
     sheet_name = workfile.sheet_names()[0].encode("utf-8") #sheet name
     table = workfile.sheet_by_index(0)
     table_list = table.col_values(1)
     useful_data_list = table_list[5:-1]
-    data = collections.Counter(useful_data_list)
-    return data
+    return useful_data_list
+
+def unique(data_list):
+    return dict(zip(*np.unique(data_list, return_counts=True)))
 
 @time_it
 def mat_figure_out(x_axis,y):
@@ -78,7 +81,7 @@ def mat_figure_out(x_axis,y):
 
     color: 柱形的颜色
     '''
-    show_font = mfm.FontProperties(fname='./fonts/msyh.ttf') #指定默认字体 
+    show_font = mfm.FontProperties(fname=settings.FONT_PATH) #指定默认字体 
     x = np.arange(0,len(x_axis),1)
     fig = plt.figure(figsize=(10,8))
     rects = plt.bar(x,y,0.8,facecolor = 'lightskyblue',edgecolor = 'white')
@@ -94,8 +97,7 @@ def mat_figure_out(x_axis,y):
         plt.text(m,n,pstr)
 
     plt.xticks(x,x_axis,fontproperties=show_font, fontsize=8)
-    # print "haha"
-    plt.savefig("results.png")
+    plt.savefig("out_put.png")
     # plt.show()
 '''
 # https://www.zhihu.com/question/27800240
@@ -107,9 +109,11 @@ def set_count(table_list):
 
 if __name__ == '__main__':
 
-    ana_info = read_excel()
-    # print ana_info
+    data_list = read_excel()
+
     print "获取数据正常"
+    #返回去重字典
+    ana_info = unique(data_list)
 
     x_axis,y = [],[]
     for i,j in ana_info.items():
