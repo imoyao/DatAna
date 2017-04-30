@@ -1,65 +1,58 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from time import time
+import json
+import time
+import urllib2
+from lxml import etree
+# from dataspider import *
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
-import collections
+def get_html(url):  #
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    headers = {'User-Agent': user_agent} 
+    req = urllib2.Request(url, headers = headers)
+    response = urllib2.urlopen(req)
+    html = response.read()
+    print type(html)
+    write_file("target.html",html)
+    return html
 
-# how to???
-# def foo():
-# 	listmylist.append()
-# 	return mylist
+def write_file(w_file_name,content):
+    with open(w_file_name,"w") as f:
+        f.write(content)
+    print "{} write finished.".format(w_file_name)
 
-# a = foo()
-# type(a) = list
+def get_target_url(pre_html):
+    html = etree.HTML(pre_html)
+    names = html.xpath('//div[@class = "newsrcon fr"]/ul/li/a/text()')
+    urls = html.xpath('//div[@class = "newsrcon fr"]/ul/li/a/@href') 
+    target_urls = ["http://www.snchangwu.gov.cn" + i[2:len(i)] for i in urls]
+    print type(target_urls)
+    target_info =dict(zip(names,target_urls))
+    print target_info
+    print type(target_info)
+    dict3  = json.dumps(target_info).decode("unicode-escape").encode("utf-8")
+    print dict3
+    print type(dict3)
 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov 14 01:01:29 2016
-
-@author: toby
-"""
-#知识点：原函数有返回值，加上装饰器如何拿到返回值？
-
-# #装饰器函数
-# def outer(fun): 
-#     def wrapper(strs): 
-#         # print '哈哈'
-#         res = fun(strs)
-#         return res #返回原函数的返回值
-#         # print 'hello world!'
-#     return wrapper
-
-# @outer
-# def func1(arg):
-#     print 'this is func1',arg
-#     return '100' #这是原函数的返回值
-
-# #调用函数时，传入一个字符串作为参数
-# aa = func1("my name is tantianran")
-# print aa
+    write_file("info.json",dict3)
 
 
-# https://zhidao.baidu.com/question/474181365.html
-funcall_cost = 0
-def time_it(func):
-	def wrapfunc(*args):
-		global funcall_cost
-		now = time()
-		result = func(*args)
-		funcall_cost = time() - now
-		return result,funcall_cost
-	return wrapfunc
+# '''
+    # dict1 = {"data":["\u73bb\u7483", "\u5851\u6599", "\u91d1\u5c5e"]}
+    # import json
+    # j = json.dumps(dict1)
+    # dict2  = j.decode("unicode-escape").decode("unicode-escape")
+    # print dict2
 
-@time_it 
-def counter(foo_list):
-    rets = collections.Counter(foo_list)
-    # foo_dict = dict(rets)
-    # print foo_dict
-    return dict(rets)
+
+        # target_info = json.dumps(target_urls,ensure_ascii=False)    #
+    # '''
 
 if __name__ == '__main__':
-    foo_list = ["a","b","c","a","b","a","b","c","a","b"]
-    a = counter(foo_list)
-    print a
-    # print funcall_cost
+    # url = 'http://www.snchangwu.gov.cn/zjzw/xzgk.htm'
+    with open ("target.html","r") as f:
+        pre_html = f.read()
+    get_target_url(pre_html)
