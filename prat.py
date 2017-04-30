@@ -110,8 +110,12 @@ if __name__ == '__main__':
  # https://www.oschina.net/question/2400361_2151742
  # https://www.zhihu.com/question/27800240
     # foo_list = read_excel()
+<<<<<<< HEAD
     num = int(raw_input("please enter an int bigger than 10:"))
     foo_list = list(generate_data(num))
+=======
+    foo_list = list(generate_data(10))
+>>>>>>> 42006db8009ea794ed9017268117f9f4765f0c43
 
     n = unique(foo_list)
     n_t = n[1]

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!-- the count 彭公镇 in data is:1723
 the count 亭口镇 in data is:1324
@@ -105,6 +106,10 @@ the count 洪家镇 in data is:1419
 
 =COUNTIF(B6:B9520,"枣园镇")
 数据来源：http://www.tcmap.com.cn/shanxi/changwuxian.html
+=======
+=COUNTIF(B6:B9520,"枣园镇")
+
+>>>>>>> 42006db8009ea794ed9017268117f9f4765f0c43
 总户数：35589
 昭仁街道办事处：5035
 巨家：4017户
