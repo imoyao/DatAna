@@ -1,0 +1,189 @@
+
+=COUNTIF(B6:B9520,"枣园镇")
+
+
+{"彭公镇概况": "http://www.snchangwu.gov.cn/info/1050/16871.htm", "昭仁街道办事处概况": "http://www.snchangwu.gov.cn/info/1050/16873.htm", "洪家镇概况": "http://www.snchangwu.gov.cn/info/1050/16870.htm", "丁家镇概况": "http://www.snchangwu.gov.cn/info/1050/16872.htm", "枣园镇概况": "http://www.snchangwu.gov.cn/info/1050/16866.htm", "亭口镇概况": "http://www.snchangwu.gov.cn/info/1050/16874.htm", "相公镇概况": "http://www.snchangwu.gov.cn/info/1050/16864.htm", "巨家镇概况": "http://www.snchangwu.gov.cn/info/1050/16869.htm"}
+
+
+funcall_cost = 0
+def deco(func):
+  def wrapfunc(*args, **kwrags):
+    global funcall_cost
+    now = time()
+    result = func(*args, **kwargs)
+    funcall_cost = time() - now
+    return result
+  return wrapfunc
+
+a = b 
+if not a:
+  a = c  >>> a=b or a = c
+
+
+亭口镇概况
+4980户 2.1万人 118.7平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16873.htm
+昭仁街道办事处概况
+7728户 33192人 47.6平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16871.htm
+彭公镇概况
+4712户 17018人 48.6平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16870.htm
+洪家镇概况
+3565户 14744人 49平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16869.htm
+巨家镇概况
+4400户 16087人 77平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16866.htm
+枣园镇概况
+2224户 8641人 50.02平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16864.htm
+相公镇概况
+5963户 23767人 66.41平方公里
+this is url: http://www.snchangwu.gov.cn/info/1050/16872.htm
+丁家镇概况
+2587户 10543人 32.9平方公里
+
+
+http://www.cnblogs.com/nju2014/p/5707980.html
+
+<!-- the count 彭公镇 in data is:1723
+the count 亭口镇 in data is:1324
+the count 相公镇 in data is:1309
+the count 巨家镇 in data is:835
+the count 昭仁街道办 in data is:1543
+the count 枣园镇 in data is:778
+the count 丁家镇 in data is:584
+the count 洪家镇 in data is:1419 -->
+
+数据来源：http://www.snchangwu.gov.cn
+
+各乡镇基本信息：
+爬虫：使用urllib2结合xpath抓取各乡镇概述信息写入txt文本;
+读取txt，通过re获得json格式数据写入town_data.json；
+
+贫困户信息：
+使用xlrd读取excel文件，获得各乡镇贫困户信息；
+
+信息展示：
+使用matplotlib数据可视化库绘制出条形图和饼图。
+
+
+# 各乡镇情况
+('4980户', '2.1万人', '118.7平方公里')
+('7728户', '33192人', '47.6平方公里')
+('4712户', '17018人', '48.6平方公里')
+('3565户', '14744人', '49平方公里')
+('4400户', '16087人', '77平方公里')
+('2224户', '8641人', '50.02平方公里')
+('5963户', '23767人', '66.41平方公里')
+('2587户', '10543人', '32.9平方公里')
+('4980户', '2.1万人', '118.7平方公里')
+('7728户', '33192人', '47.6平方公里')
+('4712户', '17018人', '48.6平方公里')
+('3565户', '14744人', '49平方公里')
+('4400户', '16087人', '77平方公里')
+('2224户', '8641人', '50.02平方公里')
+('5963户', '23767人', '66.41平方公里')
+('2587户', '10543人', '32.9平方公里')
+
+
+#json 数据
+
+{
+    "亭口镇":{
+        "part_area":118.7,
+        "family_num":4980,
+        "people_num":21000
+    },
+    "丁家镇":{
+        "part_area":32.9,
+        "family_num":2587,
+        "people_num":10543
+    },
+    "巨家镇":{
+        "part_area":77,
+        "family_num":4400,
+        "people_num":16087
+    },
+    "相公镇":{
+        "part_area":66.41,
+        "family_num":5963,
+        "people_num":23767
+    },
+    "彭公镇":{
+        "part_area":48.6,
+        "family_num":4712,
+        "people_num":17018
+    },
+    "洪家镇":{
+        "part_area":49,
+        "family_num":3565,
+        "people_num":14744
+    },
+    "枣园镇":{
+        "part_area":50.02,
+        "family_num":2224,
+        "people_num":8641
+    },
+    "昭仁街道办事处":{
+        "part_area":47.6,
+        "family_num":7728,
+        "people_num":33192
+    }
+}
+
+
+如果我们想删除所有边框怎么办？ 我们可以这样做：
+ax1.spines['right'].set_visible(False)
+ax1.spines['top'].set_visible(False)
+
+
+
+#部分参考来源
+Matplotlib 入门教程 · Matplotlib 入门教程
+
+Python--matplotlib绘图可视化知识点整理 - michael翔的IT私房菜 - SegmentFault
+
+用Python做科学计算 - 用Python做科学计算
+
+python画图－－柱状图 - jenyzhang的专栏 - 博客频道 - CSDN.NET
+
+Python plotting - Matplotlib 2.0.0 documentation
+
+
+
+python操作Excel读写--使用xlrd - lhj588 - 博客园
+
+python中使用xlrd、xlwt操作excel表格详解 - qiuri2008 - 博客园
+
+Python Excel解析 - 另一个自己 - 博客频道 - CSDN.NET
+
+
+
+python 装饰器部分 装饰器返回值与函数返回值 混乱了
+
+python的生成随机数列表问题 - 开源中国社区
+
+python 获得列表中每个元素出现次数的最快方法？
+
+'''
+不显示图片，以便进行批处理：
+
+import matplotlib
+matplotlib.use('Agg')
+需加在 import matplotlib.pyplot as plt 之前，同时删掉plt.show()
+'''
+
+
+funcall_cost = 0
+def deco(func):
+	def wrapfunc(*args, **kwrags):
+		global funcall_cost
+		now = time()
+		result = func(*args, **kwargs)
+		funcall_cost = time() - now
+		return result
+	return wrapfunc
+
+
