@@ -143,7 +143,7 @@ def mat_bar_chart(x_axis, y_axis, y_axis_total):  # 条形图
     plt.title(settings.BAR_CHART_TITLE, fontproperties=show_font, fontsize=20)
 
     plt.savefig(settings.BAR_CHART_FILE)
-    print("Get bar chart finished.")
+    print("Draw bar chart finished.")
     # plt.show()
 
 
@@ -174,7 +174,7 @@ def mat_pie_chart(x_axis, y_axis):  # 饼图
     plt.legend(prop=show_font, fontsize=4, loc=0)
     plt.title(settings.PIE_CHART_TITLE, fontproperties=show_font, fontsize=16)
     plt.savefig(settings.PIE_CHART_FILE)
-    print("Get pie chart finished.")
+    print("Draw pie chart finished.")
     # plt.show()
 
 if __name__ == '__main__':
