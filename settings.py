@@ -33,3 +33,34 @@ BAR_CHART_FILE = OUTPUT_FILE_PATH + BAR_CHART_FILE_NAME
 EXCEL_PATH_FILE = INPUT_FILE_PATH + EXCEL_FILE_NAME
 
 FONT_PATH_FILE = FONT_FILE_PATH + FONT_FILE_NAME
+
+
+'''
+判断文件是否存在
+
+import os
+r_file = settings.READ_FILE
+def readFile():
+	if not os.path.isfile(r_file):
+		print "{} not exits.".format(r_file)
+	else:
+		try:
+			with open(r_file,"r") as f:
+				content = f.read()
+				print content
+		except Exception as e:
+			raise e
+def writeFile():
+	mystr = "hello,world."
+	w_file = settings.WRITE_FILE
+	dir_name,file_name = os.path.split(w_file)[0],os.path.split(w_file)[1]
+	if not os.path.exists(dir_name):
+		os.makedirs(r"{}".format(dir_name))
+		with open(w_file,"w") as f:
+			f.write(mystr)
+	else:
+		with open(w_file,"w") as f:
+			f.write(mystr)
+	print "write file finished."
+
+'''
