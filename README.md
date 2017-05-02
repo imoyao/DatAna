@@ -28,6 +28,11 @@
 
 Python 中文编码搞得我死去活来，问题还很多，代码鲁棒性也很差，欢迎各位Pythoner积极PR和指正。
 
+## 关于中文编码：TODO
+
+[立即停止使用 setdefaultencoding('utf-8')， 以及为什么](https://blog.ernest.me/post/python-setdefaultencoding-unicode-bytes)
+
+[Python 编码为什么那么蛋疼？ - 知乎](https://www.zhihu.com/question/31833164)
 
 ### 参考资料：
 
