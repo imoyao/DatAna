@@ -20,7 +20,7 @@
 
 ## 分析结果
 
-![贫困信息概览-条形图](http://oh6j8wijn.bkt.clouddn.com/bar_out_put.png)
+![贫困信息概览-条形图](https://github.com/imoyao/DatAna/blob/master/statics/outfiles/bar_out_put.png)
 
 ![贫困户分布信息-饼图](http://oh6j8wijn.bkt.clouddn.com/pie_out_put.png)
 
