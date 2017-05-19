@@ -28,6 +28,10 @@
 
 Python 中文编码搞得我死去活来，问题还很多，代码鲁棒性也很差，欢迎各位Pythoner积极PR和指正。
 
+### TODO
+
+使用有序字典collections.OrderedDict()代替base.sort_dict_by_keys()方法
+
 ## 关于中文编码：TODO
 
 [立即停止使用 setdefaultencoding('utf-8')， 以及为什么](https://blog.ernest.me/post/python-setdefaultencoding-unicode-bytes)
